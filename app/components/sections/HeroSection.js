@@ -62,6 +62,7 @@ export default function HeroSection() {
           background: linear-gradient(180deg, #ffffff 0%, #f8fbff 50%, #ffffff 100%);
           border-bottom: 1px solid #e8ecf4;
           font-family: 'DM Sans', sans-serif;
+          contain: layout style paint;
         }
 
         .hero-inner {
@@ -260,22 +261,20 @@ export default function HeroSection() {
         .hero-swiper-outer {
           width: 100%;
           position: relative;
+          aspect-ratio: 1 / 1;
+          max-height: 400px;
         }
 
         .hero-swiper-outer .swiper {
           width: 100%;
+          height: 100%;
           border-radius: 16px;
           overflow: hidden;
           box-shadow:
             0 4px 6px rgba(0,0,0,.04),
             0 12px 40px rgba(0,0,0,.12),
             0 0 0 1px rgba(0,0,0,.05);
-        }
-
-        .hero-swiper-outer .swiper {
           position: relative;
-          width: 100%;
-          height: 100%;
         }
         .hero-swiper-outer .swiper-wrapper {
           position: relative;
@@ -283,18 +282,20 @@ export default function HeroSection() {
           height: 100%;
         }
         .hero-swiper-outer .swiper-slide {
-          height: 340px;
+          height: 100%;
+          width: 100%;
           position: absolute;
           inset: 0;
           opacity: 0;
           visibility: hidden;
           overflow: hidden;
           transition: opacity .7s ease, visibility .7s ease;
+          will-change: opacity, visibility;
         }
         .hero-swiper-outer .swiper-slide.active {
           opacity: 1;
           visibility: visible;
-          position: relative;
+          position: absolute;
         }
 
         /* Real image */
@@ -499,11 +500,11 @@ export default function HeroSection() {
           .hero-media { width: 100%; }
           .hero-heading.line1 { font-size: 1.2rem; }
           .hero-heading.line2 { font-size: 2rem; }
-          .accred-logos { gap: 10px;, justify-content: end; }
+          .accred-logos { gap: 10px; justify-content: center; }
           .hero-ctas { gap: 10px; justify-content: center; }
           .btn-primary, .btn-amber { padding: 11px 20px; font-size: 13px; }
           .btn-outline { padding: 10px 18px; font-size: 13px; }
-          .hero-swiper-outer .swiper-slide { height: 260px; }
+          .hero-swiper-outer { max-height: 380px; }
           .swiper-btn-prev { left: 8px; }
           .swiper-btn-next { right: 8px; }
         }
