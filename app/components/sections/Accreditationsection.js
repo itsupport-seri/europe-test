@@ -97,8 +97,7 @@ export default function AccreditationSection() {
           </h2>
 
           <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
-            Our programs are backed by leading international accreditation bodies and trusted by global
-            institutions, ensuring quality, credibility, and worldwide recognition.
+            15,000+ students learn with internationally certified teachers through a globally recognized American curriculum.
           </p>
 
           {/* Trust badges */}
