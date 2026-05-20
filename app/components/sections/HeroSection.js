@@ -551,13 +551,13 @@ export default function HeroSection() {
             </div>
 
             <div className="hero-ctas">
-              <a href="https://europe.internationalschooling.org/#book-demo" className="btn-primary">
+              <a href="https://internationalschooling.org/demo" className="btn-primary">
                 Book Demo
               </a>
-              <a href="https://europe.internationalschooling.org/#callback" className="btn-outline">
+              <a href="https://internationalschooling.org/callback" className="btn-outline">
                 Book Callback
               </a>
-              <a href="https://europe.internationalschooling.org/#download-brochure" className="btn-amber">
+              <a href="https://internationalschooling.org/download-brochure" className="btn-amber">
                 Get Brochure
               </a>
             </div>

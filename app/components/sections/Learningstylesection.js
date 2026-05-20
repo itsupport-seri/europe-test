@@ -190,7 +190,7 @@ export default function LearningStyleSection() {
           </p>
 
           <a
-            href="https://europe.internationalschooling.org/europe#book-demo"
+            href="https://internationalschooling.org/demo"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-[0.88rem] font-bold text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200"

@@ -594,7 +594,7 @@ export default function WhyChooseSection() {
           {/* CTA */}
           <div ref={ctaRef} className="wcs-cta-wrap">
             <a
-              href="https://europe.internationalschooling.org/#book-demo"
+              href="https://internationalschooling.org/demo"
               className="wcs-btn"
             >
               Book Free Demo

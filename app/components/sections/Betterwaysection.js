@@ -325,7 +325,7 @@ export default function BetterWaySimple() {
             }}
           >
             <a
-              href="https://europe.internationalschooling.org/#book-demo"
+              href="https://internationalschooling.org/demo"
               className="bws-s-btn"
             >
               Book Free Demo
