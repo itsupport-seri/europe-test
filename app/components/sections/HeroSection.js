@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const STATS = [
   { value: "15,000+", label: "Students" },
@@ -14,7 +15,6 @@ const SLIDES = [
   {
     src: "/new-collage.avif",
     label: "Happy Students from 190+ Countries",
-    // fallbackBg: "linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)",
   },
   {
     src: "/uae-main.avif",
@@ -39,70 +39,15 @@ const SLIDES = [
 ];
 
 export default function HeroSection() {
-  const swiperRef = useRef(null);
-  const swiperInstanceRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [swiperReady, setSwiperReady] = useState(false);
   const [imgErrors, setImgErrors] = useState({});
 
   useEffect(() => {
-    // Inject Swiper CSS
-    if (!document.getElementById("swiper-css")) {
-      const link = document.createElement("link");
-      link.id = "swiper-css";
-      link.rel = "stylesheet";
-      link.href =
-        "https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css";
-      document.head.appendChild(link);
-    }
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % SLIDES.length);
+    }, 4500);
 
-    // Load Swiper JS
-    const initSwiper = () => {
-      if (window.Swiper && swiperRef.current && !swiperInstanceRef.current) {
-        swiperInstanceRef.current = new window.Swiper(swiperRef.current, {
-          loop: true,
-          autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-          },
-          effect: "fade",
-          fadeEffect: { crossFade: true },
-          speed: 800,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-          },
-          navigation: {
-            nextEl: ".swiper-btn-next",
-            prevEl: ".swiper-btn-prev",
-          },
-          on: {
-            slideChange() {
-              setActiveIndex(this.realIndex);
-            },
-          },
-        });
-        setSwiperReady(true);
-      }
-    };
-
-    if (window.Swiper) {
-      initSwiper();
-    } else {
-      const script = document.createElement("script");
-      script.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js";
-      script.onload = initSwiper;
-      document.body.appendChild(script);
-    }
-
-    return () => {
-      if (swiperInstanceRef.current) {
-        swiperInstanceRef.current.destroy(true, true);
-        swiperInstanceRef.current = null;
-      }
-    };
+    return () => window.clearInterval(intervalId);
   }, []);
 
   const handleImgError = (index) => {
@@ -112,8 +57,6 @@ export default function HeroSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
         .hero-section {
           width: 100%;
           background: linear-gradient(180deg, #ffffff 0%, #f8fbff 50%, #ffffff 100%);
@@ -214,6 +157,17 @@ export default function HeroSection() {
           gap: 16px;
           flex-wrap: wrap;
           margin-bottom: 28px;
+        }
+        .accred-logo-wrapper {
+          width: 320px;
+          max-width: 100%;
+          min-width: 160px;
+          min-height: 44px;
+        }
+        .accred-logo-image {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
         }
         .accred-logo-pill {
           display: flex;
@@ -318,21 +272,41 @@ export default function HeroSection() {
             0 0 0 1px rgba(0,0,0,.05);
         }
 
+        .hero-swiper-outer .swiper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .hero-swiper-outer .swiper-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
         .hero-swiper-outer .swiper-slide {
           height: 340px;
-          position: relative;
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          visibility: hidden;
           overflow: hidden;
+          transition: opacity .7s ease, visibility .7s ease;
+        }
+        .hero-swiper-outer .swiper-slide.active {
+          opacity: 1;
+          visibility: visible;
+          position: relative;
         }
 
         /* Real image */
         .slide-img {
+          position: relative;
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          overflow: hidden;
           display: block;
           transition: transform .7s ease;
         }
-        .hero-swiper-outer .swiper-slide:hover .slide-img {
+        .hero-swiper-outer .swiper-slide.active:hover .slide-img {
           transform: scale(1.04);
         }
 
@@ -505,7 +479,7 @@ export default function HeroSection() {
           .hero-heading.line1 { font-size: 1.2rem; }
           .hero-heading.line2 { font-size: 2rem; }
           .accred-logos { gap: 10px; }
-          .hero-ctas { gap: 10px;, justify-content: center; }
+          .hero-ctas { gap: 10px; justify-content: center; }
           .btn-primary, .btn-amber { padding: 11px 20px; font-size: 13px; }
           .btn-outline { padding: 10px 18px; font-size: 13px; }
           .hero-swiper-outer .swiper-slide { height: 260px; }
@@ -560,12 +534,17 @@ export default function HeroSection() {
             </p>
 
             <div className="accred-logos">
-              <img
-                src="/new-strip.avif"
-                alt="NEASC, WASC, Cognia accreditation logos"
-                style={{ height: "40px", width: "auto", objectFit: "contain" }}
-                onError={e => { e.currentTarget.style.display = "none"; }}
-              />
+              <div className="accred-logo-wrapper">
+                <Image
+                  src="/new-strip.avif"
+                  alt="NEASC, WASC, Cognia accreditation logos"
+                  width={220}
+                  height={55}
+                  className="accred-logo-image"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
               {/* {ACCREDS.map(a => (
                 <span key={a} className="accred-logo-pill">{a}</span>
               ))} */}
@@ -591,28 +570,39 @@ export default function HeroSection() {
             <div className="hero-swiper-outer">
 
               {/* Prev / Next buttons (outside swiper so they overlap border-radius) */}
-              <button className="swiper-btn-prev" aria-label="Previous slide">
+              <button className="swiper-btn-prev" aria-label="Previous slide" onClick={() => setActiveIndex((current) => (current - 1 + SLIDES.length) % SLIDES.length)}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
-              <button className="swiper-btn-next" aria-label="Next slide">
+              <button className="swiper-btn-next" aria-label="Next slide" onClick={() => setActiveIndex((current) => (current + 1) % SLIDES.length)}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
 
-              <div className="swiper" ref={swiperRef}>
+              <div className="swiper">
                 <div className="swiper-wrapper">
                   {SLIDES.map((slide, i) => (
-                    <div className="swiper-slide" key={i}>
+                    <div
+                      className={`swiper-slide${activeIndex === i ? " active" : ""}`}
+                      key={i}
+                    >
                       {!imgErrors[i] ? (
-                        <img
-                          className="slide-img"
-                          src={slide.src}
-                          alt={slide.label}
-                          onError={() => handleImgError(i)}
-                        />
+                        <div className="slide-img">
+                          <Image
+                            src={slide.src}
+                            alt={slide.label}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 520px"
+                            quality={80}
+                            priority={i === 0}
+                            loading={i === 0 ? "eager" : "lazy"}
+                            decoding="async"
+                            style={{ objectFit: "cover" }}
+                            onError={() => handleImgError(i)}
+                          />
+                        </div>
                       ) : (
                         <div
                           className="slide-fallback"
@@ -648,7 +638,18 @@ export default function HeroSection() {
                 </div>
 
                 {/* Pagination */}
-                <div className="swiper-pagination" />
+                <div className="swiper-pagination" role="tablist">
+                  {SLIDES.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`swiper-pagination-bullet${activeIndex === index ? " swiper-pagination-bullet-active" : ""}`}
+                      aria-label={`Go to slide ${index + 1}`}
+                      aria-pressed={activeIndex === index}
+                      onClick={() => setActiveIndex(index)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -661,11 +662,7 @@ export default function HeroSection() {
                   role="tab"
                   aria-selected={activeIndex === i}
                   aria-label={`Slide ${i + 1}`}
-                  onClick={() => {
-                    if (swiperInstanceRef.current) {
-                      swiperInstanceRef.current.slideToLoop(i);
-                    }
-                  }}
+                  onClick={() => setActiveIndex(i)}
                 />
               ))}
             </div>

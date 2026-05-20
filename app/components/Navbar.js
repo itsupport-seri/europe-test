@@ -131,7 +131,7 @@ export default function Navbar() {
                     href={cta.href}
                     target={cta.external ? "_blank" : undefined}
                     rel={cta.external ? "noreferrer" : undefined}
-                    className="cta-btn px-5 py-2 text-[12.5px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#077ffb] transition-colors"
+                    className="navbar-cta-btn px-5 py-2 text-[12.5px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#0662d1] transition-colors"
                   >
                     {cta.label}
                   </a>
@@ -150,7 +150,7 @@ export default function Navbar() {
 
             <div className="flex lg:hidden items-center gap-2 ml-auto">
               <a href="/enrollment"
-                className="cta-btn px-3 py-1.5 text-[11px] font-bold tracking-wide bg-[#077ffb] text-white rounded-full"
+                className="navbar-cta-btn px-3 py-1.5 text-[11px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#0662d1] transition-colors"
               >
                 ENROLL NOW
               </a>
@@ -222,15 +222,14 @@ export default function Navbar() {
 
             <div className="px-4 py-4 flex flex-col gap-2.5">
               {ctaLinks.map((cta) => (
-                
-                 <a key={cta.label}
+                <a key={cta.label}
                   href={cta.href}
                   target={cta.external ? "_blank" : undefined}
                   rel={cta.external ? "noreferrer" : undefined}
                   onClick={() => setMenuOpen(false)}
-                  className={`cta-btn flex items-center justify-center py-3 text-[13px] font-semibold rounded-xl transition-colors ${
+                  className={`navbar-cta-btn flex items-center justify-center py-3 text-[13px] font-semibold rounded-xl transition-colors ${
                     cta.primary
-                      ? "bg-[#f97316] text-white hover:bg-[#ea6c0a]"
+                      ? "bg-[#077ffb] text-white hover:bg-[#0662d1]"
                       : "border border-gray-200 bg-white text-[#444] hover:border-[#077ffb] hover:text-[#077ffb]"
                   }`}
                 >

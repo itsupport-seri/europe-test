@@ -118,7 +118,7 @@ export default function CtaBanner() {
           z-index: 1;
         }
 
-        .cta-btn {
+        .cta-card .cta-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -137,13 +137,13 @@ export default function CtaBanner() {
           letter-spacing: .01em;
         }
 
-        .cta-btn:hover {
+        .cta-card .cta-btn:hover {
           background: #eff6ff;
           transform: translateY(-2px);
           box-shadow: 0 8px 30px rgba(0,0,0,.2);
         }
 
-        .cta-btn:active {
+        .cta-card .cta-btn:active {
           transform: translateY(0);
           box-shadow: 0 2px 10px rgba(0,0,0,.15);
         }

@@ -162,6 +162,25 @@
 }
 
 /* ─── Navbar Optimized Styles ─── */
+.navbar-cta-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+}
+
+.navbar-cta-btn:hover::before {
+  transform: translateX(0);
+}
+
 .cta-btn {
   position: relative;
   overflow: hidden;
