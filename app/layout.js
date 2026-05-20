@@ -1,20 +1,12 @@
-import { Playfair_Display, Plus_Jakarta_Sans, Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond, DM_Sans } from "next/font/google";
 import ThirdPartyScripts from "@/app/components/ThirdPartyScripts";
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  display: "optional",
-  preload: false,
-});
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  display: "optional", 
+  display: "swap", 
   preload: true,
 });
 
@@ -23,7 +15,7 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   style: ["normal", "italic"],
-  display: "optional",
+  display: "swap",
   preload: false,
 });
 
@@ -31,8 +23,8 @@ const dmSans = DM_Sans({
   variable: "--font-dm",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  display: "optional",
-  preload: false,
+  display: "swap",
+  preload: true,
 });
 
 export const metadata = {
@@ -65,7 +57,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${jakarta.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}>
       <head>
         <ThirdPartyScripts />
       </head>

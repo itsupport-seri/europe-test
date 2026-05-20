@@ -116,7 +116,7 @@ export default function HeroSection() {
                   width={220}
                   height={55}
                   className={styles["accred-logo-image"]}
-                  loading="eager"
+                  priority={true}
                   decoding="async"
                   quality={75}
                 />
@@ -170,7 +170,7 @@ export default function HeroSection() {
                             sizes="(max-width: 768px) 100vw, 520px"
                             quality={i === 0 ? 75 : 70}
                             priority={i === 0}
-                            loading={i === 0 ? "eager" : "lazy"}
+                            loading={i === 0 ? undefined : "lazy"}
                             decoding="async"
                             style={{ objectFit: "cover" }}
                             onError={() => handleImgError(i)}
