@@ -33,9 +33,9 @@ const plans = [
     title: "Group Learning",
     desc: "Structured live classes with peer interaction.",
     features: [
-      "Live 60-minute classes",
-      "Monday-Thursday schedule",
+      "Fixed schedule",
       "3 parent-teacher meetings",
+      "Live 60-minute classes",
       "Career counselling",
     ],
   },
@@ -45,8 +45,8 @@ const plans = [
     desc: "Self-paced learning with dedicated teacher guidance and doubt-clearing sessions.",
     features: [
       "500+ self-paced courses",
-      "1 live class per week",
       "Monday-Friday support",
+      "1 live class per week",
       "No assignment deadlines",
     ],
   },
@@ -186,7 +186,7 @@ export default function LearningStyleSection() {
           }}
         >
           <p className="text-[0.9rem] text-slate-500 font-medium">
-            Grades KG-12&nbsp;&nbsp;|&nbsp;&nbsp;Ages 5–18&nbsp;&nbsp;|&nbsp;&nbsp;Enrol any time, year-round
+            Grades KG-12&nbsp;&nbsp;|&nbsp;&nbsp;Ages 5–18&nbsp;&nbsp;|&nbsp;&nbsp; Fully Flexible Schedule
           </p>
 
           <a
