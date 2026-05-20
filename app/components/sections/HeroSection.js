@@ -22,7 +22,7 @@ const SLIDES = [
     fallbackBg: "linear-gradient(135deg, #047857 0%, #10b981 100%)",
   },
   {
-    src: "/slider/1.jpeg",
+    src: "/slider/1.webp",
     label: "Live Interactive Classes Daily",
     fallbackBg: "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)",
   },
@@ -564,6 +564,8 @@ export default function HeroSection() {
                   className="accred-logo-image"
                   loading="eager"
                   decoding="async"
+                  priority
+                  fetchPriority="high"
                 />
               </div>
               {/* {ACCREDS.map(a => (
@@ -616,12 +618,13 @@ export default function HeroSection() {
                             alt={slide.label}
                             fill
                             sizes="(max-width: 768px) 100vw, 520px"
-                            quality={80}
+                            quality={i === 0 ? 90 : 80}
                             priority={i === 0}
                             loading={i === 0 ? "eager" : "lazy"}
-                            decoding="async"
+                            decoding={i === 0 ? "sync" : "async"}
                             style={{ objectFit: "cover" }}
                             onError={() => handleImgError(i)}
+                            fetchPriority={i === 0 ? "high" : "low"}
                           />
                         </div>
                       ) : (

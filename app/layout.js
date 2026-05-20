@@ -7,7 +7,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["700", "800"],
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -24,7 +24,7 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 const dmSans = DM_Sans({
@@ -32,7 +32,7 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 export const metadata = {
@@ -67,6 +67,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}>
       <head>
+        {/* Preload critical images for LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/new-collage.avif"
+          type="image/avif"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/new-strip.avif"
+          type="image/avif"
+        />
         <ThirdPartyScripts />
       </head>
       <body className="min-h-full flex flex-col bg-white font-[family-name:var(--font-body)]">

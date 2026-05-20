@@ -75,8 +75,8 @@ fbq('track', 'PageView');`;
     window.addEventListener("touchstart", loadScripts, { passive: true });
     window.addEventListener("keydown", loadScripts, { passive: true });
 
-    // Or after 4000ms delay
-    timerId = setTimeout(loadScripts, 4000);
+    // Or after 6000ms delay (increased from 4000ms to avoid blocking FCP)
+    timerId = setTimeout(loadScripts, 6000);
 
     return cleanup;
   }, []);
