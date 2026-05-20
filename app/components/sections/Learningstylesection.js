@@ -81,7 +81,7 @@ export default function LearningStyleSection() {
 
         {/* ── Heading ── */}
         <header
-          className="text-center mb-14"
+          className="text-center md:mb-14 mb-0"
           style={{
             opacity: sectionVisible ? 1 : 0,
             transform: sectionVisible ? "translateY(0)" : "translateY(24px)",
@@ -117,7 +117,7 @@ export default function LearningStyleSection() {
               </svg>
             </span>
           </h2>
-          <p className="text-[1.05rem] text-slate-700 mt-4 max-w-xl mx-auto">
+          <p className="text-[1.05rem] text-slate-700 md:mt-4 mt-6 max-w-xl mx-auto">
           Choose the Learning Plan that best fits your child’s goals, lifestyle, and learning style.
 
           </p>
@@ -178,7 +178,7 @@ export default function LearningStyleSection() {
         {/* ── Bottom meta + CTA ── */}
         <div
           ref={bottomRef}
-          className="mt-16 flex flex-col items-center gap-5 text-center"
+          className="mt-1 md:mt-16 flex flex-col items-center gap-5 text-center"
           style={{
             opacity: bottomVisible ? 1 : 0,
             transform: bottomVisible ? "translateY(0)" : "translateY(18px)",
