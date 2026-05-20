@@ -478,7 +478,7 @@ export default function HeroSection() {
           .hero-media { width: 100%; }
           .hero-heading.line1 { font-size: 1.2rem; }
           .hero-heading.line2 { font-size: 2rem; }
-          .accred-logos { gap: 10px; }
+          .accred-logos { gap: 10px;, justify-content: center; }
           .hero-ctas { gap: 10px; justify-content: center; }
           .btn-primary, .btn-amber { padding: 11px 20px; font-size: 13px; }
           .btn-outline { padding: 10px 18px; font-size: 13px; }
