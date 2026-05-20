@@ -370,18 +370,38 @@ const css = `
   }
 
   /* ── Mobile ── */
-  @media (max-width: 640px) {
-    .adm-row {
-      grid-template-columns: 36px 1fr;
-    }
-    .adm-spine { left: 18px; }
-    .adm-dot { width: 36px; padding-top: 18px; }
-    .adm-dot-inner { width: 28px; height: 28px; font-size: 10px; }
-    .adm-card.adm-left,
-    .adm-card.adm-right { grid-column: 2; text-align: left; }
-    .adm-card.adm-left .adm-card-top { flex-direction: row; justify-content: flex-start; }
-    .adm-spacer { display: none; }
+ /* Replace the existing @media (max-width: 640px) block with this */
+@media (max-width: 640px) {
+  .adm-row {
+    grid-template-columns: 36px 1fr;
+    align-items: start;
   }
+  .adm-spine { left: 18px; }
+
+  /* Dot always in column 1, row 1 */
+  .adm-dot {
+    grid-column: 1;
+    grid-row: 1;
+    width: 36px;
+    padding-top: 18px;
+  }
+  .adm-dot-inner { width: 28px; height: 28px; font-size: 10px; }
+
+  /* All cards always in column 2, row 1 */
+  .adm-card.adm-left,
+  .adm-card.adm-right {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
+  .adm-card.adm-left .adm-card-top {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  /* Hide spacers completely */
+  .adm-spacer { display: none; }
+}
 `;
 
 /* ─── COMPONENT ──────────────────────────────────────────────── */

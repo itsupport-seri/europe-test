@@ -5,107 +5,105 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 
 const faqs = [
   {
-    question: "Is your diploma accepted in the UAE and internationally?",
+    question: "Is the school internationally accredited?",
     answer:
-      "Yes. Our accreditation supports recognition of transcripts and diploma for admissions and transfers in the UAE and globally.",
+      "Yes, International Schooling is fully accredited by the three most prestigious school accreditors - NEASC, WASC and Cognia, USA",
   },
   {
-    question: "Is International Schooling an accredited school?",
+    question: "Is the diploma recognized across Europe and worldwide?",
     answer:
-      "Yes. International Schooling is fully accredited and recognized by NEASC, WASC, and Cognia, with additional approvals including College Board and NCAA.",
+      "Yes, International Schooling offers the American Diploma which is recognized across Europe and worldwide.",
   },
   {
-    question: "Are class timings suitable for UAE time zones?",
+    question: "Which curriculum does the school follow?",
     answer:
-      "Yes. Group schedules are UAE-friendly and built to support families living in the region, with flexible options across multiple time slots.",
+      "International Schooling follows KG – Grade 12 American Curriculum.",
   },
   {
-    question: "How are exams conducted?",
+    question: "Are AP or Advanced Academic Courses available?",
     answer:
-      "All tests and quizzes are provided online. Students progress through them in sequence as part of their academic milestones, with real-time monitoring.",
+      "Yes, AP or Advanced Academic Courses are available.",
   },
   {
-    question: "Will my child receive a certificate or diploma?",
+    question: "Can students transfer to European universities easily? ",
     answer:
-      "Yes. Students receive the applicable certificate or diploma upon successful completion of their coursework or level, recognized internationally.",
+      "Yes, student can easily apply to top universities across Europe with our globally accepted American High School Diploma.",
   },
   {
-    question: "Can students from UAE apply to universities after online schooling?",
+    question: "Are classes live, recorded, or self-paced?",
     answer:
-      "Yes, students from accredited online schools can apply to universities worldwide, including top institutions in the US, UK, Canada, and Australia.",
+      "All the classes are live both in One-to-One Learning Plan and Group Learning Plan. Besides we also offer Self-Study Learning Plan that allows students to learn at their own pace.",
   },
   {
-    question: "What is the best online school in UAE?",
+    question: "Is the learning schedule flexible for different European time zones?",
     answer:
-      "The best online school offers an accredited curriculum, expert teachers, and flexible learning with strong student support — which is exactly what we provide.",
-  },
-
-
-  {
-    question: "Can my child get into a college/university after getting a certificate/diploma from International Schooling?",
-    answer:
-      "Upon successful completion of their course or level with International Schooling, they will be issued an American certificate or high school diploma. You may provide this certificate or diploma to their academic counselor or guide at the college or university to which you are applying.",
+      "Yes, learning schedules are flexible according to different European time zones.",
   },
   {
-    question: "What is the fee structure?",
+    question: "Can students study while traveling across Europe?",
     answer:
-      "Each course has a different fee based on the grade, level, and subjects. Once you register with us, you will be guided through our fee structure before making the final payment applicable to you.",
+      "Yes, International Schooling offers flexible schedules which allows students to study while traveling.",
   },
   {
-    question: "What are the enrollment dates and deadlines?",
+    question: "Are teachers internationally certified and experienced?",
     answer:
-      "There is a fixed deadline to complete enrollment for group learning. However, for one-to-one learning, enrollments at International Schooling are open throughout the year.",
+      "Yes, all our teachers are internationally trained and certified.",
   },
   {
-    question: "Is your diploma accepted in the UAE and internationally?",
+    question: "How do students interact with teachers and classmates online?",
     answer:
-      "Yes. Our accreditation supports recognition of transcripts and diploma for admissions and transfers in the UAE and globally.",
+      "International schooling has a multicultural classroom where students and teachers interact through face to face live online classes.",
   },
   {
-    question: "Is International Schooling an accredited school?",
+    question: "Is multilingual support available for international families?",
     answer:
-      "Yes. International Schooling is fully accredited and recognized by NEASC, WASC, and Cognia, with additional approvals including College Board and NCAA.",
+      "Yes, International Schooling offers multilingual support with 600+ teachers speaking 40+ languages, besides translation tools on the Learning Management System.",
   },
   {
-    question: "Are class timings suitable for UAE time zones?",
+    question: "What technology or devices are required for online learning?",
     answer:
-      "Yes. Group schedules are UAE-friendly and built to support families living in the region, with flexible options across multiple time slots.",
+      "A tablet/ laptop with internet access and an active camera.",
   },
   {
-    question: "How are exams conducted?",
+    question: "Are books and study materials included?",
     answer:
-      "All tests and quizzes are provided online. Students progress through them in sequence as part of their academic milestones, with real-time monitoring.",
+      "Yes, the fee includes all the learning material with interactive audio-video curriculum all over an interactive and intuitive learning management system.",
   },
   {
-    question: "Will my child receive a certificate or diploma?",
+    question: "How are assignments, exams, and grading managed?",
     answer:
-      "Yes. Students receive the applicable certificate or diploma upon successful completion of their coursework or level, recognized internationally.",
+      "Assignments, exams and grading are done manually by certified teachers over recorded calls.",
   },
   {
-    question: "Can students from UAE apply to universities after online schooling?",
+    question: "Can parents track attendance and academic progress?",
     answer:
-      "Yes, students from accredited online schools can apply to universities worldwide, including top institutions in the US, UK, Canada, and Australia.",
+      "Yes, parents can track attendance and academic progress through the official school application. Our teachers share daily, weekly and monthly academic progress with parents for effective academics.",
   },
   {
-    question: "What is the best online school in UAE?",
+    question: "Is one-to-one academic support available?",
     answer:
-      "The best online school offers an accredited curriculum, expert teachers, and flexible learning with strong student support — which is exactly what we provide.",
+      "Yes, one-to-one academic support is available for students, including administrative support as well.",
+  },
+  {
+    question: "Does the school provide university counselling and career guidance?",
+    answer:
+      "Yes, International Schooling offers career counselling sessions with internationally certified career counselors, supporting students for university success globally.",
   },
 
   {
-    question: "Will my child receive a certificate or diploma?",
+    question: "Are extracurricular activities and student clubs available?",
     answer:
-      "Yes. Students receive the applicable certificate or diploma upon successful completion of their coursework or level, recognized internationally.",
+      "Yes, International Schooling offers a plethora of extracurricular activities and student clubs including music, dance, theatres, arts, chess, fashion, book club etc.",
   },
   {
-    question: "Can students from UAE apply to universities after online schooling?",
+    question: "Is the school suitable for homeschooling and flexible learning families?",
     answer:
-      "Yes, students from accredited online schools can apply to universities worldwide, including top institutions in the US, UK, Canada, and Australia.",
+      "The school is perfect for students who want the benefits of a fully accredited flexible school, without compromising on the quality of education.",
   },
   {
-    question: "What is the best online school in UAE?",
+    question: "Why should parents choose this school over traditional schools?",
     answer:
-      "The best online school offers an accredited curriculum, expert teachers, and flexible learning with strong student support — which is exactly what we provide.",
+      "This school is a perfect blend of high-quality international curriculum, internationally qualified and certified teachers, with customized and personalized learning plans – all accredited and recognized over 190+ countries thus being a perfect fit for any student globally.",
   },
 
 ];
