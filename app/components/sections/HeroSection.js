@@ -228,7 +228,7 @@ export default function HeroSection() {
           justify-content: center;
           padding: 12px 26px;
           border-radius: 999px;
-          background: #d97706;
+          background: #b45309;
           color: #fff;
           font-size: 14px;
           font-weight: 700;
@@ -237,7 +237,7 @@ export default function HeroSection() {
           border: none;
           cursor: pointer;
         }
-        .btn-amber:hover { background: #b45309; transform: translateY(-1px); }
+        .btn-amber:hover { background: #92400e; transform: translateY(-1px); }
 
         /* ── RIGHT MEDIA ── */
         .hero-media {
@@ -379,6 +379,15 @@ export default function HeroSection() {
           background: rgba(255,255,255,.55);
           opacity: 1;
           transition: background .25s, width .25s;
+          position: relative;
+        }
+        .hero-swiper-outer .swiper-pagination-bullet::after {
+          content: '';
+          position: absolute;
+          top: -20px;
+          left: -20px;
+          right: -20px;
+          bottom: -20px;
         }
         .hero-swiper-outer .swiper-pagination-bullet-active {
           background: #fff;
@@ -438,6 +447,18 @@ export default function HeroSection() {
           background: #e2e8f0;
           transition: background .3s;
           cursor: pointer;
+          border: none;
+          padding: 0;
+          outline: none;
+          position: relative;
+        }
+        .thumb-dot::after {
+          content: '';
+          position: absolute;
+          top: -21px;
+          left: 0;
+          right: 0;
+          bottom: -21px;
         }
         .thumb-dot.active {
           background: #2563eb;
@@ -643,9 +664,10 @@ export default function HeroSection() {
                     <button
                       key={index}
                       type="button"
+                      role="tab"
+                      aria-selected={activeIndex === index}
                       className={`swiper-pagination-bullet${activeIndex === index ? " swiper-pagination-bullet-active" : ""}`}
                       aria-label={`Go to slide ${index + 1}`}
-                      aria-pressed={activeIndex === index}
                       onClick={() => setActiveIndex(index)}
                     />
                   ))}
@@ -656,8 +678,9 @@ export default function HeroSection() {
             {/* Progress bar tabs */}
             <div className="thumb-row" role="tablist" aria-label="Slide navigation">
               {SLIDES.map((_, i) => (
-                <div
+                <button
                   key={i}
+                  type="button"
                   className={`thumb-dot${activeIndex === i ? " active" : ""}`}
                   role="tab"
                   aria-selected={activeIndex === i}

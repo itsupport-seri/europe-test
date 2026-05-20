@@ -61,6 +61,15 @@ const CSS = `
     display: flex; align-items: center; justify-content: center;
     text-decoration: none; flex-shrink: 0;
     transition: transform 0.22s cubic-bezier(.22,.68,0,1.4), opacity 0.2s;
+    position: relative;
+  }
+  .soc-icon::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
   }
   .soc-icon:hover { transform: translateY(-4px) scale(1.1); opacity: 1; }
 
@@ -525,13 +534,13 @@ const COUNTRIES_DEFAULT_COUNT = 44;
 
 /* ── Accreditations with image paths ── */
 const accreditations = [
-  { label: "NEASC",        img: "/footer/neasc-flat.webp" },
-  { label: "WASC",         img: "/footer/wasc.webp" },
-  { label: "Cognia",       img: "/footer/cognia-flat.webp" },
-  { label: "NCAA",         img: "/footer/ncaa-flat.png" },
+  { label: "NEASC",        img: "/footer/neasc-flat.webp", w: 90, h: 30 },
+  { label: "WASC",         img: "/footer/wasc.webp", w: 80, h: 30 },
+  { label: "Cognia",       img: "/footer/cognia-flat.webp", w: 90, h: 30 },
+  { label: "NCAA",         img: "/footer/ncaa-flat.png", w: 30, h: 30 },
   
-  { label: "College Board",img: "/footer/college-board-flat.webp" },
-  { label: "UNESCO",       img: "/footer/unesco-cid.webp" },
+  { label: "College Board",img: "/footer/college-board-flat.webp", w: 110, h: 30 },
+  { label: "UNESCO",       img: "/footer/unesco-cid.webp", w: 30, h: 30 },
 ];
 
 /* ─── MOBILE ACCORDION ─────────────────────────────────────────── */
@@ -847,7 +856,7 @@ export default function Footer() {
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={a.img} alt={a.label} loading="lazy" decoding="async" />
+                  <img src={a.img} alt={a.label} width={a.w} height={a.h} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -858,7 +867,7 @@ export default function Footer() {
           {/* ── BOTTOM BAR — single line ── */}
           <div ref={bottomRef} className="reveal">
             <div className="bottom-bar" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.42)", lineHeight: 1.6, textAlign: "center", margin: 0 }}>
+              <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, textAlign: "center", margin: 0 }}>
                 © {new Date().getFullYear()} International Schooling. All rights reserved. &nbsp;·&nbsp; Accredited Online Education &nbsp;·&nbsp; Serving 190+ Countries Globally
               </p>
             </div>
