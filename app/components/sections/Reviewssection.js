@@ -221,7 +221,7 @@ export default function ReviewsSection() {
         </div>
 
 
-        <h2 className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-3xl mb-5 md:text-4xl font-extrabold text-center leading-tight" style={{ color: "#1d4ed8" }}>
+        <h2 className="font-[family-name:var(--font-display)] text-[1.85rem] sm:text-3xl mb-5  font-extrabold text-center leading-tight" style={{ color: "#1d4ed8" }}>
           Learn Anywhere. <br className="md:hidden" /> <span className="text-[2.3rem] md:text-[1.85rem]">Grow Everywhere.</span>
         </h2>
 

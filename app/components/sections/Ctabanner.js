@@ -170,7 +170,7 @@ export default function CtaBanner() {
             font-size: 1.5rem;
           }
           .cta-badge-text {
-            font-size: 13px;
+            font-size: 11px;
           }
           .cta-btn {
             font-size: 15px;
