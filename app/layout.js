@@ -6,7 +6,7 @@ const playfair = Playfair_Display({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["700", "800"],
-  display: "swap",
+  display: "optional",
   preload: false,
 });
 
@@ -14,7 +14,7 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  display: "swap", 
+  display: "optional", 
   preload: true,
 });
 
@@ -23,7 +23,7 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   style: ["normal", "italic"],
-  display: "swap",
+  display: "optional",
   preload: false,
 });
 
@@ -31,7 +31,7 @@ const dmSans = DM_Sans({
   variable: "--font-dm",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
+  display: "optional",
   preload: false,
 });
 

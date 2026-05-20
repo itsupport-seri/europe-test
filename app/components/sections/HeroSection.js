@@ -20,7 +20,7 @@ const SLIDES = [
   {
     src: "/uae-main.avif",
     label: "World-Class American Curriculum",
-    fallbackBg: "linear-gradient(135deg, #047857 0%, #10b981 100%)",
+    fallbackBg: "linear-gradient(135deg, #2d4c43 0%, #10b981 100%)",
   },
   {
     src: "/slider/1.webp",
@@ -44,11 +44,17 @@ export default function HeroSection() {
   const [imgErrors, setImgErrors] = useState({});
 
   useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % SLIDES.length);
-    }, 4500);
+    let intervalId;
+    const delayId = window.setTimeout(() => {
+      intervalId = window.setInterval(() => {
+        setActiveIndex((current) => (current + 1) % SLIDES.length);
+      }, 4500);
+    }, 15000);
 
-    return () => window.clearInterval(intervalId);
+    return () => {
+      window.clearTimeout(delayId);
+      if (intervalId) window.clearInterval(intervalId);
+    };
   }, []);
 
   const handleImgError = (index) => {
