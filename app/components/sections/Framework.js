@@ -365,7 +365,7 @@ const css = `
   .il-stat:nth-child(2){ border-right:none; }
   .il-stat:nth-child(3),.il-stat:nth-child(4){ border-top:0.5px solid rgba(0,0,0,0.08); }
   .il-h1{
-  font-size:clamp(1rem, 3vw, 2.1rem);
+  font-size:clamp(1.5rem, 3vw, 2.1rem);
 }
 }
 `;
