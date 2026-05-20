@@ -67,19 +67,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}>
       <head>
-        {/* Preload critical images for LCP */}
-        <link
-          rel="preload"
-          as="image"
-          href="/new-collage.avif"
-          type="image/avif"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/new-strip.avif"
-          type="image/avif"
-        />
         <ThirdPartyScripts />
       </head>
       <body className="min-h-full flex flex-col bg-white font-[family-name:var(--font-body)]">
