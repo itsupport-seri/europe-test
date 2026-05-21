@@ -13,10 +13,11 @@ import {
 const ring1Segments = [
     { label: "WASC Accredited", icon: Users, color: "#e53e3e", light: "#fff5f5" },
     { label: "NEASC Accredited", icon: Shield, color: "#dd6b20", light: "#fffaf0" },
+    { label: "Cognia Accredited", icon: Coins, color: "#285e61", light: "#e6fffa" },
     // { label: "Parent Partnership", icon: Heart, color: "#d69e2e", light: "#fffff0" },
     { label: "University Pathways", icon: Briefcase, color: "#38a169", light: "#f0fff4" },
     { label: "Project-Based Learning", icon: FolderOpen, color: "#3182ce", light: "#ebf8ff" },
-    { label: "Cognia Accredited", icon: Coins, color: "#285e61", light: "#e6fffa" },
+    
     // { label: "Student Portfolio", icon: BookOpen, color: "#6b46c1", light: "#faf5ff" },
     // { label: "Outreach Programs", icon: Globe, color: "#d53f8c", light: "#fff5f7" },
 ];

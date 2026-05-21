@@ -5,18 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MessageCircle, Clock, X, Menu } from "lucide-react";
 
-
-
 const ctaLinks = [
   { label: "Book Free Demo",    href: "https://internationalschooling.org/demo",        primary: false, external: true },
   { label: "Request Callback",  href: "https://internationalschooling.org/callback",    primary: false, external: true },
-  // { label: "Log In",            href: "https://sms.internationalschooling.org/international-schooling/common/login", primary: false, external: true },
   { label: "Enroll Now",        href: "https://internationalschooling.org/enrollment",  primary: true , external: true },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [navVisible, setNavVisible] = useState(true);
+  const [contactBarVisible, setContactBarVisible] = useState(true);
 
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
@@ -28,12 +25,15 @@ export default function Navbar() {
           const currentScrollY = window.scrollY;
 
           if (currentScrollY <= 0) {
-            setNavVisible(true);
-          } else if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-            setNavVisible(false);
+            // At the very top — show contact bar
+            setContactBarVisible(true);
+          } else if (currentScrollY > lastScrollY.current && currentScrollY > 40) {
+            // Scrolling DOWN — hide contact bar, close mobile menu
+            setContactBarVisible(false);
             setMenuOpen(false);
           } else if (currentScrollY < lastScrollY.current) {
-            setNavVisible(true);
+            // Scrolling UP — show contact bar again
+            setContactBarVisible(true);
           }
 
           lastScrollY.current = currentScrollY;
@@ -49,21 +49,37 @@ export default function Navbar() {
 
   return (
     <>
-
+      {/*
+        Spacer: always reserves space for the sticky main nav (3.75rem).
+        On desktop, also reserves space for the contact bar (2.5rem) which
+        is always in the DOM (just translated out of view when hidden).
+      */}
       <div className="h-[3.75rem] lg:h-[calc(3.75rem+2.5rem)]" aria-hidden="true" />
 
-      <header className={`navbar-wrapper ${navVisible ? "navbar-visible" : "navbar-hidden"}`}>
+      {/* ─────────────────────────────────────────────────────────────
+          WRAPPER — fixed to top; full width
+      ───────────────────────────────────────────────────────────── */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full">
 
-        {/* ── ROW 1: CONTACT BAR (desktop only) ── */}
-        <div className="hidden lg:block bg-[#0560cc]">
+        {/* ── ROW 1: CONTACT BAR (desktop only) ──
+            Slides up/down with a CSS transition; never unmounts so the
+            main nav below it stays at a predictable position. */}
+        <div
+          className={`
+            hidden lg:block bg-[#0560cc] overflow-hidden
+            transition-all duration-300 ease-in-out
+            ${contactBarVisible ? "max-h-20 opacity-100" : "max-h-0 opacity-0"}
+          `}
+        >
           <div className="max-w-screen-xl mx-auto px-6 flex items-center justify-between h-10">
 
             {/* Left — 24/7 WhatsApp */}
-            <a href="https://api.whatsapp.com/send?phone=17273902419"
+            <a
+              href="https://api.whatsapp.com/send?phone=17273902419"
               target="_blank"
               rel="noreferrer"
-              className="contact-chip flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 group">
-
+              className="contact-chip flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 group"
+            >
               <span className="relative flex items-center justify-center w-4 h-4 shrink-0">
                 <span className="wa-pulse absolute inset-0 rounded-full" />
                 <MessageCircle size={12} className="text-[#25d366] relative z-10" />
@@ -71,32 +87,27 @@ export default function Navbar() {
               <span className="text-[11px] font-semibold text-white tracking-wide">
                 24/7 WhatsApp
               </span>
-              {/* ✅ was text-white/70 — now text-white */}
               <span className="text-[11px] font-semibold text-white tracking-wide">
                 +1 (727) 390-2419
               </span>
             </a>
 
-            
-
             {/* Right — Call + Email chips */}
             <div className="flex items-center gap-1">
-
-              <a href="tel:+17273902419"
+              <a
+                href="tel:+17273902419"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
-                {/* ✅ was text-white/80 — now text-white */}
                 <Phone size={11} className="text-white shrink-0" />
                 <span className="text-[11px] font-semibold text-white tracking-wide">
                   +1 (727) 390-2419
                 </span>
               </a>
 
-              {/* ✅ was text-white/25 (nearly invisible) — now text-white/60 */}
               <span className="text-white/60 text-xs mx-1">|</span>
 
-            
-              <a href="mailto:support@internationalschooling.org"
+              <a
+                href="mailto:support@internationalschooling.org"
                 className="contact-chip flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10"
               >
                 <Mail size={11} className="text-white shrink-0" />
@@ -104,12 +115,11 @@ export default function Navbar() {
                   support@internationalschooling.org
                 </span>
               </a>
-
             </div>
           </div>
         </div>
 
-        {/* ── ROW 2: MAIN NAV ── */}
+        {/* ── ROW 2: MAIN NAV — always visible, always sticky ── */}
         <div className="bg-white shadow-md border-b border-gray-200">
           <div className="max-w-screen-xl mx-auto px-3 lg:px-6 flex items-center h-[3.75rem]">
 
@@ -124,10 +134,12 @@ export default function Navbar() {
               />
             </Link>
 
+            {/* Desktop CTA buttons */}
             <div className="hidden lg:flex items-center gap-2 ml-auto">
               {ctaLinks.map((cta) =>
                 cta.primary ? (
-                  <a key={cta.label}
+                  <a
+                    key={cta.label}
                     href={cta.href}
                     target={cta.external ? "_blank" : undefined}
                     rel={cta.external ? "noreferrer" : undefined}
@@ -136,7 +148,8 @@ export default function Navbar() {
                     {cta.label}
                   </a>
                 ) : (
-                  <a key={cta.label}
+                  <a
+                    key={cta.label}
                     href={cta.href}
                     target={cta.external ? "_blank" : undefined}
                     rel={cta.external ? "noreferrer" : undefined}
@@ -148,8 +161,10 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Mobile — Enroll Now + hamburger */}
             <div className="flex lg:hidden items-center gap-2 ml-auto">
-              <a href="/enrollment"
+              <a
+                href="/enrollment"
                 className="navbar-cta-btn px-3 py-1.5 text-[11px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#0662d1] transition-colors"
               >
                 ENROLL NOW
@@ -175,7 +190,8 @@ export default function Navbar() {
 
             <div className="bg-[#0560cc] px-4 py-4 flex flex-col gap-3">
 
-              <a href="https://api.whatsapp.com/send?phone=17273902419"
+              <a
+                href="https://api.whatsapp.com/send?phone=17273902419"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3"
@@ -190,7 +206,8 @@ export default function Navbar() {
                 </div>
               </a>
 
-              <a href="tel:+17273902419"
+              <a
+                href="tel:+17273902419"
                 className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3"
               >
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shrink-0">
@@ -199,20 +216,19 @@ export default function Navbar() {
                 <div>
                   <p className="text-[10px] font-bold text-white uppercase tracking-widest">Available on Call</p>
                   <p className="text-[13px] font-semibold text-white">+1 (727) 390-2419</p>
-                  {/* ✅ was text-white/60 — now text-white/80 */}
-                  <p className="text-[10px] text-white mt-0.5">10:00 AM – 7:00 PM (UTC +08:00)</p>
+                  <p className="text-[10px] text-white/80 mt-0.5">10:00 AM – 7:00 PM (UTC +08:00)</p>
                 </div>
               </a>
 
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] font-bold text-white uppercase tracking-widest px-1">Email Us</p>
                 {["info@internationalschooling.org", "support@internationalschooling.org"].map((email) => (
-                  <a key={email}
+                  <a
+                    key={email}
                     href={`mailto:${email}`}
                     className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"
                   >
                     <Mail size={13} className="text-white shrink-0" />
-                    {/* ✅ was text-white/90 — now text-white */}
                     <span className="text-[12px] text-white font-medium">{email}</span>
                   </a>
                 ))}
@@ -222,7 +238,8 @@ export default function Navbar() {
 
             <div className="px-4 py-4 flex flex-col gap-2.5">
               {ctaLinks.map((cta) => (
-                <a key={cta.label}
+                <a
+                  key={cta.label}
                   href={cta.href}
                   target={cta.external ? "_blank" : undefined}
                   rel={cta.external ? "noreferrer" : undefined}
