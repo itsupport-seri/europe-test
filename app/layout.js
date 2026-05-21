@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans, Cormorant_Garamond, DM_Sans } from "next/font/google";
-import ThirdPartyScripts from "@/app/components/ThirdPartyScripts";
+import { Toaster } from 'react-hot-toast';
+import ThirdPartyScripts from "./components/ThirdPartyScripts";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -63,8 +64,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-full flex flex-col bg-white font-[family-name:var(--font-body)]">
         {children}
-      </body>
+        <Toaster />      </body>
     </html>
   );
 }
-
