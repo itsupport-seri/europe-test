@@ -598,7 +598,7 @@ export default function Framework() {
                         {/* RIGHT COLUMN */}
                         <div ref={rightRef} className="il-col right">
                             {/* {ring1Segments.slice(4).map((s, i) => renderCard(s, `Outer · ${i + 5}`))} */}
-                            {ring2Segments.slice(0, 3).map((s, i) => renderCard(s, `Middle · ${i + 2}`))}
+                            {ring2Segments.slice(1, 4).map((s, i) => renderCard(s, `Middle · ${i + 2}`))}
                             {ring3Segments.slice(0, 3).map((s, i) => renderCard(s, `Inner · ${i + 1}`))}
                             
                         </div>

@@ -93,7 +93,7 @@ export default function LearningStyleSection() {
             className="text-[2rem] sm:text-[2.6rem] md:text-[2.9rem] font-extrabold leading-tight text-slate-900"
           >
             One School. Multiple 
-            <span className="relative inline-block text-[#1e52e1]">
+            <span className="relative inline-block text-[#1e52e1] ps-2">
               Learning Paths.
               <svg
                 className="absolute -bottom-1 left-0 w-full"

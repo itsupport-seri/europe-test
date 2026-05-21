@@ -89,7 +89,7 @@ const css = `
   /* ── Header ── */
   .adm-head {
     text-align: center;
-    max-width: 580px;
+    max-width: 600px;
     margin: 0 auto 36px;
   }
 
@@ -635,9 +635,9 @@ const [titleAnimated, setTitleAnimated] = useState(false);
         <div className="adm-head">
           <div ref={eyebrowRef} className="adm-eyebrow">✦ Simple 4-Step Process</div>
           <h2 ref={titleRef} className="adm-h2" style={{ color: "#5b5b5b" }}>
-            Complete
-            <em className="relative inline-block" style={{ fontStyle: "normal" }}>
-              Enrollment
+            Complete Enrollment
+            <em className="relative inline-block" style={{ fontStyle: "normal", paddingLeft: 6 }}>
+               Process
               <svg
                 style={{ position: "absolute", bottom: -4, left: 0, width: "100%" }}
                 height="6"
@@ -658,8 +658,8 @@ const [titleAnimated, setTitleAnimated] = useState(false);
                   }}
                 />
               </svg>
-            </em>{" "}
-            Process
+            </em>
+            
           </h2>
           <p ref={subRef} className="adm-sub">
             Thoughtfully designed to give you a full tour of our learning environment
