@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MessageCircle, Clock, X, Menu } from "lucide-react";
 
+// Updated CTA links with hash navigation
 const ctaLinks = [
-  { label: "Book Free Demo",    href: "https://internationalschooling.org/demo",        primary: false, external: true },
-  { label: "Request Callback",  href: "https://internationalschooling.org/callback",    primary: false, external: true },
+  { label: "Book Free Demo",    href: "#demo-book",        primary: false, external: false },
+  { label: "Request Callback",  href: "#callback",    primary: false, external: false },
   { label: "Enroll Now",        href: "https://internationalschooling.org/enrollment",  primary: true , external: true },
 ];
 
@@ -136,29 +137,29 @@ export default function Navbar() {
 
             {/* Desktop CTA buttons */}
             <div className="hidden lg:flex items-center gap-2 ml-auto">
-              {ctaLinks.map((cta) =>
-                cta.primary ? (
-                  <a
-                    key={cta.label}
-                    href={cta.href}
-                    target={cta.external ? "_blank" : undefined}
-                    rel={cta.external ? "noreferrer" : undefined}
-                    className="navbar-cta-btn px-5 py-2 text-[12.5px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#0662d1] transition-colors"
-                  >
-                    {cta.label}
-                  </a>
-                ) : (
-                  <a
-                    key={cta.label}
-                    href={cta.href}
-                    target={cta.external ? "_blank" : undefined}
-                    rel={cta.external ? "noreferrer" : undefined}
-                    className="px-4 py-2 text-[12.5px] font-semibold tracking-wide text-[#1a1a1a] border border-gray-200 rounded-full hover:border-[#077ffb] hover:text-[#077ffb] transition-colors"
-                  >
-                    {cta.label}
-                  </a>
-                )
-              )}
+               {ctaLinks.map((cta) => (
+                 cta.primary ? (
+                   <Link
+                     key={cta.label}
+                     href={cta.href}
+                     target={cta.external ? "_blank" : undefined}
+                     rel={cta.external ? "noreferrer" : undefined}
+                     className="navbar-cta-btn px-5 py-2 text-[12.5px] font-bold tracking-widest uppercase bg-[#077ffb] text-white rounded-full hover:bg-[#0662d1] transition-colors"
+                   >
+                     {cta.label}
+                   </Link>
+                 ) : (
+                   <Link
+                     key={cta.label}
+                     href={cta.href}
+                     target={cta.external ? "_blank" : undefined}
+                     rel={cta.external ? "noreferrer" : undefined}
+                     className="px-4 py-2 text-[12.5px] font-semibold tracking-wide text-[#1a1a1a] border border-gray-200 rounded-full hover:border-[#077ffb] hover:text-[#077ffb] transition-colors"
+                   >
+                     {cta.label}
+                   </Link>
+                 )
+               ))}
             </div>
 
             {/* Mobile — Enroll Now + hamburger */}

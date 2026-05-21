@@ -10,7 +10,7 @@ const Accreditationsection = dynamic(() => import("@/app/components/sections/Acc
 const Learningstylesection = dynamic(() => import("@/app/components/sections/Learningstylesection"), { ssr: false });
 const Reviewssection = dynamic(() => import("@/app/components/sections/Reviewssection"), { ssr: false });
 const AdmissionProcess = dynamic(() => import("@/app/components/sections/AdmissionProcess"), { ssr: false });
-const SuccessStories = dynamic(() => import("@/app/components/sections/SuccessStories"), { ssr: false });
+const Calender = dynamic(() => import("@/app/components/sections/Calender"), { ssr: false });
 const FAQSection = dynamic(() => import("@/app/components/sections/FAQSection"), { ssr: false });
 const Ctabanner = dynamic(() => import("@/app/components/sections/Ctabanner"), { ssr: false });
 const Footer = dynamic(() => import("@/app/components/Footer"), { ssr: false });
@@ -24,7 +24,7 @@ const sections = [
   { key: "learning", minHeight: 640, Component: Learningstylesection },
   { key: "reviews", minHeight: 980, Component: Reviewssection },
   { key: "admission", minHeight: 900, Component: AdmissionProcess },
-  // { key: "success", minHeight: 900, Component: SuccessStories },
+  { key: "calender", minHeight: 900, Component: Calender },
   { key: "faq", minHeight: 1180, Component: FAQSection },
   { key: "ctabanner", minHeight: 520, Component: Ctabanner },
   // { key: "footer", minHeight: 1500, Component: Footer },
@@ -66,13 +66,42 @@ function LazyMount({ children, minHeight }) {
 }
 
 export default function BelowFoldSections() {
+  // Scroll to section based on URL hash (e.g., #demo-book, #callback)
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+    // Initial scroll on mount
+    scrollToHash();
+    // Listen for future hash changes
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, []);
+
   return (
     <>
-      {sections.map(({ key, minHeight, Component }) => (
-        <LazyMount key={key} minHeight={minHeight}>
-          <Component />
-        </LazyMount>
-      ))}
+      {sections.map(({ key, minHeight, Component }) => {
+        const isCalender = key === "calender";
+        return (
+          <LazyMount key={key} minHeight={minHeight}>
+            {isCalender && (
+              <>
+                <div id="demo-book" />
+                <div id="callback" />
+              </>
+            )}
+            <div id={key}>
+              <Component />
+            </div>
+          </LazyMount>
+        );
+      })}
     </>
   );
 }
