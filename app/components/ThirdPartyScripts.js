@@ -25,10 +25,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       document.head.appendChild(gtmScript);
 
       // 2. Facebook Pixel
-      const fbScript = document.createElement("script");
-      fbScript.id = "facebook-pixel";
-      fbScript.async = true;
-      fbScript.innerHTML = `!function(f,b,e,v,n,t,s)
+      if (!window.fbq) {
+        const fbScript = document.createElement("script");
+        fbScript.id = "facebook-pixel";
+        fbScript.async = true;
+        fbScript.innerHTML = `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -38,7 +39,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${ANALYTICS_CONFIG.FACEBOOK_PIXEL_ID}');
 fbq('track', 'PageView');`;
-      document.head.appendChild(fbScript);
+        document.head.appendChild(fbScript);
+      }
 
       // 3. Microsoft Clarity
       const clarityScript = document.createElement("script");
@@ -53,10 +55,18 @@ fbq('track', 'PageView');`;
 
       // 4. Zoho Widget
       const zohoScript = document.createElement("script");
-      zohoScript.id = "zoho-widget";
+      zohoScript.id = "zsiqscript";
       zohoScript.async = true;
-      zohoScript.innerHTML = `var d=document;var s=d.createElement('script');s.src='https://estimate.zohopublic.com/script?widgetcode=${ANALYTICS_CONFIG.ZOHO_WIDGET_CODE}';s.defer=true;s.async=true;var h=d.getElementsByTagName('head')[0];h.appendChild(s);window.zEmbed||function(c,m){var e,o={};try{c.deliveredScript=m;e=atob(m.split(".")[0]);for(var r="",a=0,t=e.split("|");a<t.length;a++)r+=String.fromCharCode(t[a].charCodeAt(0)-t[a].charCodeAt(0)%91);o.appToken=r}catch(e){o.appToken=m}}(window.zEmbed={},s.src);`;
-      document.head.appendChild(zohoScript);
+      zohoScript.defer = true;
+      zohoScript.src = `https://salesiq.zohopublic.com/widget?wc=${ANALYTICS_CONFIG.ZOHO_WIDGET_CODE}`;
+      zohoScript.onerror = () => {
+        console.error("Failed to load Zoho script. Check the widget code or domain.");
+      };
+      document.body.appendChild(zohoScript);
+
+      // Initialize Zoho SalesIQ
+      window.$zoho = window.$zoho || {};
+      window.$zoho.salesiq = window.$zoho.salesiq || { ready: function() {} };
     };
 
     const cleanup = () => {
