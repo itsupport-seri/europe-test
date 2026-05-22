@@ -409,8 +409,7 @@ export default function FAQSection() {
           }}
         >
           <a
-            href="https://internationalschooling.org/demo"
-            target="_blank"
+            href="#demo-book"
             style={{
               display: "inline-flex",
               alignItems: "center",

@@ -760,7 +760,7 @@ const [titleAnimated, setTitleAnimated] = useState(false);
           <a href="https://internationalschooling.org/enrollment" className="adm-btn-primary" target="_blank">
             Start Enrollment <ArrowRight size={14} strokeWidth={2.5} />
           </a>
-          <a href="https://internationalschooling.org/demo" className="adm-btn-outline" target="_blank">
+          <a href="#demo-book" className="adm-btn-outline">
             Book Free Demo
           </a>
         </div>

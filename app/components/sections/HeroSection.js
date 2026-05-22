@@ -124,10 +124,10 @@ export default function HeroSection() {
             </div>
 
             <div className={styles["hero-ctas"]}>
-              <a href="https://internationalschooling.org/demo" className={styles["btn-primary"]}>
+              <a href="#demo-book" className={styles["btn-primary"]}>
                 Book Demo
               </a>
-              <a href="https://internationalschooling.org/callback" className={styles["btn-outline"]}>
+              <a href="#callback" className={styles["btn-outline"]}>
                 Book Callback
               </a>
               <a href="https://internationalschooling.org/download-brochure" className={styles["btn-amber"]}>

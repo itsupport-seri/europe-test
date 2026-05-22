@@ -203,7 +203,7 @@ export default function CtaBanner() {
 
             {/* CTA Button */}
             <div className="cta-btn-wrap">
-              <a href="https://internationalschooling.org/demo" target="_blank" className="cta-btn">
+              <a href="#demo-book" className="cta-btn">
                 Book Free Demo Today
                 <span className="cta-btn-arrow">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
